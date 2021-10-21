@@ -1,0 +1,240 @@
+.chatlog-avatar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  margin: 0 10px 0 0;
+  position: relative
+}
+
+.chatlog-avatar__placeholder {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  letter-spacing: .5px;
+  font-size: 14px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: #c8c8c8
+}
+
+.chatlog-avatar--right {
+  margin: 0 0 0 10px;
+  -ms-flex-order: 1;
+  order: 1
+}
+
+.chatlog-avatarImage {
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: #c8c8c8
+}
+
+.chatlog-date {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  font-weight: 400;
+  margin-bottom: 5px
+}
+
+.chatlog-date--is-first {
+  margin-top: 0
+}
+
+.chatlog-messageList {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0 5px
+}
+
+.chatlog-app {
+  margin: 0 auto
+}
+
+.chatlog-root {
+  height: 100%;
+  width: 100%;
+  padding: 0 18px
+}
+
+.chatlog-message {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  margin: 4px 0;
+  padding-right: 45px;
+  padding-left: 45px
+}
+
+.chatlog-message--left.chatlog-message--is-display-avatar {
+  padding-left: 0
+}
+
+.chatlog-message--right {
+  -ms-flex-pack: end;
+  justify-content: flex-end
+}
+
+.chatlog-message--right.chatlog-message--is-display-avatar {
+  padding-right: 0
+}
+
+.chatlog-message.chatlog-message--is-last-in-group {
+  margin-bottom: 0
+}
+
+.chatlog-message--right.chatlog-message--is-display-avatar {
+  margin-right: 0
+}
+
+.chatlog-message--left.chatlog-message--is-display-avatar {
+  margin-left: 0
+}
+
+.chatlog-message__text {
+  background-color: #249afd;
+  border: 1px solid #249afd;
+  line-height: 22px;
+  color: #fff;
+  cursor: text;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 150px
+}
+
+@media (min-width: 360px) {
+  .chatlog-message__text {
+    max-width:190px
+  }
+}
+
+.chatlog-message__text--left {
+  background-color: #f1f0f0;
+  border-color: #f1f0f0;
+  color: #000
+}
+
+.chatlog-message--is-display-avatar .chatlog-message__image {
+  max-width: 60%
+}
+
+.chatlog-message__image,.chatlog-message__text {
+  position: relative;
+  display: block;
+  border-radius: 15px
+}
+
+.chatlog-message__image {
+  max-width: calc(60% + 27.6px);
+  padding: 0;
+  border: 1px solid #f1f0f0;
+  overflow: hidden;
+  transition: max-width .3s ease-in-out,margin .3s ease-in-out;
+  width: 100%
+}
+
+.chatlog-message__image img {
+  width: 100%;
+  max-width: 100%;
+  display: block
+}
+
+.chatlog-message--is-display-avatar .chatlog-message__image--expanded,.chatlog-message__image--expanded {
+  max-width: 100%
+}
+
+.chatlog-message__image--clickable {
+  cursor: pointer
+}
+
+.chatlog-message__image--clickable:after,.chatlog-message__image--clickable:before {
+  position: absolute;
+  opacity: 0;
+  transition: opacity .3s ease
+}
+
+.chatlog-message__image--clickable:before {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  pointer-events: none
+}
+
+.chatlog-message__image--clickable.chatlog-message__image--expanded:after {
+  content: "-"
+}
+
+.chatlog-message__image--clickable:after {
+  content: "+";
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%,-50%);
+  font-size: 28px;
+  font-weight: 200;
+  pointer-events: none
+}
+
+.chatlog-message__image--clickable.chatlog-message__image--hover:before {
+  opacity: .2
+}
+
+.chatlog-message__image--clickable.chatlog-message__image--hover:after {
+  opacity: 1
+}
+
+.chatlog-message__image--expanded.chatlog-message__image--right {
+  margin-left: 0
+}
+
+.chatlog-message__name {
+  position: absolute;
+  top: -18px;
+  font-size: 12px;
+  color: #a0a0a0;
+  font-weight: 400
+}
+
+.chatlog-message__content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%
+}
+
+.chatlog-message__content--left {
+  -ms-flex-pack: start;
+  justify-content: flex-start
+}
+
+.chatlog-message__content--left .chatlog-message__name {
+  left: 10px
+}
+
+.chatlog-message__content--right {
+  -ms-flex-pack: end;
+  justify-content: flex-end
+}
+
+.chatlog-message__content--right .chatlog-message__name {
+  right: 10px
+}
+
+.chatlog-message__content--has-name {
+  margin-top: 20px
+}
