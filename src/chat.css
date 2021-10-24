@@ -52,18 +52,25 @@
 
 .chatlog-messageList {
   list-style-type: none;
-  padding: 0;
-  margin: 20px 0 5px
+  padding: 0 0 10px 0;
+  margin: 0;
 }
 
 .chatlog-app {
-  margin: 0 auto
+  margin: 0 auto;
+
+  max-height: 100%;
 }
 
 .chatlog-root {
   height: 100%;
   width: 100%;
-  padding: 0 18px
+  padding: 0 18px;
+}
+
+.HeightAdjusted .chatlog-root {
+  flex-shrink: 1;
+  overflow-y: scroll;
 }
 
 .chatlog-message {
@@ -72,16 +79,16 @@
   position: relative;
   margin: 4px 0;
   padding-right: 45px;
-  padding-left: 45px
+  padding-left: 45px;
 }
 
 .chatlog-message--left.chatlog-message--is-display-avatar {
-  padding-left: 0
+  padding-left: 0;
 }
 
 .chatlog-message--right {
   -ms-flex-pack: end;
-  justify-content: flex-end
+  justify-content: flex-end;
 }
 
 .chatlog-message--right.chatlog-message--is-display-avatar {

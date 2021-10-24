@@ -1,8 +1,54 @@
 .App {
+  height: 100%;
   width: 50%;
   margin: auto;
+}
 
+main {
   padding: 10px 0;
+}
+
+.HeightAdjusted {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 0;
+}
+
+.HeightAdjusted h1 {
+  padding: 10px 0 0 0;
+}
+
+.InputForm {
+  padding: 0 0 10px 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.InputForm button {
+  margin: 0 0 0 10px;
+
+  border: none;
+  outline: none;
+
+  min-width: 70px;
+
+  background-color: white;
+
+  cursor: pointer;
+}
+
+.InputForm input {
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background-color: #efefef;
+  font-size: 16px;
+  padding: 10px 15px;
 }
 
 p {
