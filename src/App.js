@@ -10,6 +10,7 @@ const SEND_MESSAGE_URL =
   "https://codehub-simple-chat-api.herokuapp.com/sendMessage";
 
 const NICK = "Benedicte";
+const AVATAR_URL = "https://avatars.githubusercontent.com/u/3595094";
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -76,6 +77,7 @@ function App() {
                 body: JSON.stringify({
                   message: inputtedMessage,
                   nick: NICK,
+                  avatarUrl: AVATAR_URL,
                 }),
               });
 
