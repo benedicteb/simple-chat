@@ -9,11 +9,11 @@ const SUBSCRIBE_URL =
 const SEND_MESSAGE_URL =
   "https://codehub-simple-chat-api.herokuapp.com/sendMessage";
 
-const NICK = "Benedicte";
 const AVATAR_URL = "https://avatars.githubusercontent.com/u/3595094";
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [nick, setNick] = useState(undefined);
 
   useEffect(() => {
     const eventSource = new EventSource(SUBSCRIBE_URL);
@@ -28,8 +28,42 @@ function App() {
   useEffect(() => {
     const chatlogRoot = document.getElementById("chatlog-root");
 
+    if (!chatlogRoot) {
+      return;
+    }
+
     chatlogRoot.scrollTo(0, chatlogRoot.scrollHeight);
   }, [messages]);
+
+  if (nick === undefined) {
+    return (
+      <div className="App">
+        <main className="HeightAdjusted">
+          <h1>CodehubCHAT!</h1>
+
+          <form className={"InputForm"}>
+            <p>Navn: </p>
+
+            <input type="text" id="nick-input-field" />
+            <button
+              type="submit"
+              onClick={(event) => {
+                event.preventDefault();
+
+                const nickInputfield =
+                  document.getElementById("nick-input-field");
+                const inputtedNick = nickInputfield.value;
+
+                setNick(inputtedNick);
+              }}
+            >
+              Lagre
+            </button>
+          </form>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
@@ -38,7 +72,7 @@ function App() {
 
         <Chat>
           {messages.map((message) => {
-            if (message.sender === NICK) {
+            if (message.sender === nick) {
               return (
                 <ChatMessageReply
                   avatarSrc={message.avatarUrl}
@@ -76,8 +110,8 @@ function App() {
                 },
                 body: JSON.stringify({
                   message: inputtedMessage,
-                  nick: NICK,
                   avatarUrl: AVATAR_URL,
+                  nick,
                 }),
               });
 
