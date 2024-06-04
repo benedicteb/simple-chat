@@ -105,7 +105,7 @@ function App() {
               fetch(SEND_MESSAGE_URL, {
                 method: "POST",
                 headers: {
-                  Authorization: "duerkul",
+                  Authorization: "abc123",
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
