@@ -4,10 +4,9 @@ import Chat from "./components/Chat";
 import ChatMessage from "./components/ChatMessage";
 import ChatMessageReply from "./components/ChatMessageReply";
 
-const SUBSCRIBE_URL =
-  "https://codehub-simple-chat-api.herokuapp.com/subscribe/1";
-const SEND_MESSAGE_URL =
-  "https://codehub-simple-chat-api.herokuapp.com/sendMessage";
+const API_HOST = "http://localhost:3000"
+const SUBSCRIBE_URL = `${API_HOST}/subscribe/1`;
+const SEND_MESSAGE_URL = `${API_HOST}/sendMessage`;
 
 const AVATAR_URL = "https://avatars.githubusercontent.com/u/3595094";
 
