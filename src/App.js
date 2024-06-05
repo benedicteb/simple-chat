@@ -4,7 +4,7 @@ import Chat from "./components/Chat";
 import ChatMessage from "./components/ChatMessage";
 import ChatMessageReply from "./components/ChatMessageReply";
 
-const API_HOST = "http://localhost:3000"
+const API_HOST = "http://localhost:3000";
 const SUBSCRIBE_URL = `${API_HOST}/subscribe/1`;
 const SEND_MESSAGE_URL = `${API_HOST}/sendMessage`;
 
@@ -38,27 +38,33 @@ function App() {
     return (
       <div className="App">
         <main className="HeightAdjusted">
-          <h1>CodehubCHAT!</h1>
+          <div class="chat">
+            <h1>Chat!</h1>
 
-          <form className={"InputForm"}>
-            <p>Navn: </p>
+            <form className={"InputForm"}>
+              <p>Navn: </p>
 
-            <input type="text" id="nick-input-field" />
-            <button
-              type="submit"
-              onClick={(event) => {
-                event.preventDefault();
+              <input type="text" id="nick-input-field" />
+              <button
+                type="submit"
+                onClick={(event) => {
+                  event.preventDefault();
 
-                const nickInputfield =
-                  document.getElementById("nick-input-field");
-                const inputtedNick = nickInputfield.value;
+                  const nickInputfield =
+                    document.getElementById("nick-input-field");
+                  const inputtedNick = nickInputfield.value;
 
-                setNick(inputtedNick);
-              }}
-            >
-              Lagre
-            </button>
-          </form>
+                  setNick(inputtedNick);
+                }}
+              >
+                Lagre
+              </button>
+            </form>
+          </div>
+
+          <div className="qrcode">
+            <p>QR code</p>
+          </div>
         </main>
       </div>
     );
@@ -67,59 +73,69 @@ function App() {
   return (
     <div className="App">
       <main className="HeightAdjusted">
-        <h1>CodehubCHAT!</h1>
+        <div class="chat">
+          <h1>Chat!</h1>
 
-        <Chat>
-          {messages.map((message) => {
-            if (message.sender === nick) {
+          <Chat>
+            {messages.map((message) => {
+              if (message.sender === nick) {
+                return (
+                  <ChatMessageReply
+                    avatarSrc={message.avatarUrl}
+                    name={message.sender}
+                  >
+                    {message.text}
+                  </ChatMessageReply>
+                );
+              }
+
               return (
-                <ChatMessageReply
+                <ChatMessage
                   avatarSrc={message.avatarUrl}
                   name={message.sender}
                 >
                   {message.text}
-                </ChatMessageReply>
+                </ChatMessage>
               );
-            }
+            })}
+          </Chat>
 
-            return (
-              <ChatMessage avatarSrc={message.avatarUrl} name={message.sender}>
-                {message.text}
-              </ChatMessage>
-            );
-          })}
-        </Chat>
+          <form className={"InputForm"}>
+            <input type="text" id="chat-input-field" />
+            <button
+              type="submit"
+              onClick={(event) => {
+                event.preventDefault();
 
-        <form className={"InputForm"}>
-          <input type="text" id="chat-input-field" />
-          <button
-            type="submit"
-            onClick={(event) => {
-              event.preventDefault();
+                const textInputField =
+                  document.getElementById("chat-input-field");
+                const inputtedMessage = textInputField.value;
 
-              const textInputField =
-                document.getElementById("chat-input-field");
-              const inputtedMessage = textInputField.value;
+                fetch(SEND_MESSAGE_URL, {
+                  method: "POST",
+                  headers: {
+                    Authorization: "abc123",
+                    "Content-Type": "application/json",
+                  },
 
-              fetch(SEND_MESSAGE_URL, {
-                method: "POST",
-                headers: {
-                  Authorization: "abc123",
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  message: inputtedMessage,
-                  avatarUrl: AVATAR_URL,
-                  nick,
-                }),
-              });
+                  body: JSON.stringify({
+                    message: inputtedMessage,
+                    avatarUrl: AVATAR_URL,
+                    nick,
+                  }),
+                });
 
-              textInputField.value = "";
-            }}
-          >
-            Send
-          </button>
-        </form>
+                textInputField.value = "";
+              }}
+            >
+              Send
+            </button>
+          </form>
+        </div>
+
+        <div className="qrcode">
+          <p>QR code</p>
+        </div>
       </main>
     </div>
   );

@@ -5,10 +5,10 @@
 }
 
 main {
-  padding: 10px 0;
+  height: 100%;
 }
 
-.HeightAdjusted {
+.chat {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,7 +17,7 @@ main {
   padding: 0;
 }
 
-.HeightAdjusted h1 {
+.chat h1 {
   padding: 10px 0 0 0;
 }
 
@@ -64,5 +64,38 @@ p {
 
   h1 {
     text-align: center;
+  }
+}
+
+.qrcode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .qrcode {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .chat {
+    padding: 0 0 0 10px;
+  }
+
+  .qrcode {
+    padding: 0 10px 0 0;
+  }
+
+  .App {
+    width: 75%;
   }
 }
