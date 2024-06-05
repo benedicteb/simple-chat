@@ -1,7 +1,7 @@
 const ChatMessage = ({ children, name, avatarSrc }) => {
   return (
     <div className="chatlog-message chatlog-message--left chatlog-message--is-display-avatar chatlog-message--is-first-in-group chatlog-message--is-last-in-group">
-      <div aria-hidden="true" className="chatlog-avatar chatlog-avatar--left">
+      <div className="chatlog-avatar chatlog-avatar--left">
         <img
           className="chatlog-avatarImage"
           title={`${name}`}
