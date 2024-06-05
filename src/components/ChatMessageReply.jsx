@@ -12,7 +12,6 @@ const ChatMessageReply = ({ children, name, avatarSrc }) => {
         />
       </div>
       <div
-        role="text"
         className="chatlog-message__content chatlog-message__content--right chatlog-message__content--has-name"
       >
         <span
