@@ -16,7 +16,6 @@ const ChatMessageReply = ({ children, name, avatarSrc }) => {
         className="chatlog-message__content chatlog-message__content--right chatlog-message__content--has-name"
       >
         <span
-          aria-hidden="true"
           className="chatlog-message__name chatlog-message__name--right"
         >
           {name}
